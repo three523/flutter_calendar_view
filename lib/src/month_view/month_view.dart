@@ -514,7 +514,8 @@ class MonthViewState<T extends Object?> extends State<MonthView<T>> {
       shouldHighlight: isToday,
       backgroundColor: isInMonth ? Constants.white : Constants.offWhite,
       events: events,
-      onTileTap: widget.onEventTap,
+      // onTileTap: widget.onEventTap,
+      onTileTap: widget.onCellTap,
       dateStringBuilder: widget.dateStringBuilder,
     );
   }
