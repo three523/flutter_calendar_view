@@ -16,7 +16,7 @@ class DetailsPage extends StatelessWidget {
         elevation: 0,
         centerTitle: false,
         title: Text(
-          event.title,
+          event.price.toString(),
           style: TextStyle(
             color: event.color.accentColor,
             fontSize: 20.0,

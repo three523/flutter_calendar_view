@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -13,7 +15,8 @@ void main() {
     test('Events which does not overlap.', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 10000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 1)),
           endTime: now.add(
@@ -21,7 +24,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 2000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 2, minutes: 15)),
           endTime: now.add(
@@ -29,7 +33,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 3',
+          price: 1000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 3, minutes: 15)),
           endTime: now.add(
@@ -37,7 +42,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 4',
+          price: 4000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 4, minutes: 15)),
           endTime: now.add(
@@ -45,7 +51,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 5',
+          price: 25000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -66,7 +73,8 @@ void main() {
     test('Only start time is overlapping', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 2500,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -74,7 +82,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 6000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 8)),
           endTime: now.add(
@@ -95,7 +104,8 @@ void main() {
     test('Only end time is overlapping', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 8)),
           endTime: now.add(
@@ -103,7 +113,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 4000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -124,7 +135,8 @@ void main() {
     test('Event1 is smaller than event 2 and overlapping', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -132,7 +144,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 4000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 8)),
           endTime: now.add(
@@ -153,7 +166,8 @@ void main() {
     test('Event2 is smaller than event 1 and overlapping', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 8)),
           endTime: now.add(
@@ -161,7 +175,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 5000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -182,7 +197,8 @@ void main() {
     test('Both events are of same duration and occurs at the same time', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -190,7 +206,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 4000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 10)),
           endTime: now.add(
@@ -211,7 +228,8 @@ void main() {
     test('Only few events overlaps', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 1)),
           endTime: now.add(
@@ -219,7 +237,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 4',
+          price: 3000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 7)),
           endTime: now.add(
@@ -227,7 +246,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 6',
+          price: 7000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 3)),
           endTime: now.add(
@@ -235,7 +255,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 5',
+          price: 9000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 1, minutes: 15)),
           endTime: now.add(
@@ -243,7 +264,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 3',
+          price: 15000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 5)),
           endTime: now.add(
@@ -251,7 +273,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 6500,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 8)),
           endTime: now.add(
@@ -272,7 +295,8 @@ void main() {
     test('All events overlaps with each other', () {
       final events = [
         CalendarEventData(
-          title: 'Event 1',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 1)),
           endTime: now.add(
@@ -280,7 +304,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 2',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 4)),
           endTime: now.add(
@@ -288,7 +313,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 3',
+          price: 8000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 2)),
           endTime: now.add(
@@ -296,7 +322,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 4',
+          price: 9000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 7)),
           endTime: now.add(
@@ -304,7 +331,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 5',
+          price: 10000,
+          type: EventType.expenses,
           date: now,
           startTime: now.add(Duration(hours: 5)),
           endTime: now.add(
@@ -312,7 +340,8 @@ void main() {
           ),
         ),
         CalendarEventData(
-          title: 'Event 6',
+          price: 6000,
+          type: EventType.income,
           date: now,
           startTime: now.add(Duration(hours: 3)),
           endTime: now.add(
@@ -338,7 +367,8 @@ void main() {
       test('End of Event 1 and Start of Event 2 is same', () {
         final events = [
           CalendarEventData(
-            title: 'Event 1',
+            price: 6000,
+            type: EventType.income,
             date: now,
             startTime: now.add(Duration(hours: 1)),
             endTime: now.add(
@@ -346,7 +376,8 @@ void main() {
             ),
           ),
           CalendarEventData(
-            title: 'Event 2',
+            price: 3000,
+            type: EventType.income,
             date: now,
             startTime: now.add(Duration(hours: 2)),
             endTime: now.add(
@@ -371,7 +402,8 @@ void main() {
       test('Start of Event 1 and End of Event 2 is same', () {
         final events = [
           CalendarEventData(
-            title: 'Event 1',
+            price: 6000,
+            type: EventType.income,
             date: now,
             startTime: now.add(Duration(hours: 2)),
             endTime: now.add(
@@ -379,7 +411,8 @@ void main() {
             ),
           ),
           CalendarEventData(
-            title: 'Event 2',
+            price: 3000,
+            type: EventType.expenses,
             date: now,
             startTime: now.add(Duration(hours: 1)),
             endTime: now.add(
@@ -405,7 +438,8 @@ void main() {
       test('End of Event 1 and Start of Event 2 is same', () {
         final events = [
           CalendarEventData(
-            title: 'Event 1',
+            price: 6000,
+            type: EventType.income,
             date: now,
             startTime: now.add(Duration(hours: 1)),
             endTime: now.add(
@@ -413,7 +447,8 @@ void main() {
             ),
           ),
           CalendarEventData(
-            title: 'Event 2',
+            price: 8000,
+            type: EventType.expenses,
             date: now,
             startTime: now.add(Duration(hours: 2)),
             endTime: now.add(
@@ -438,7 +473,8 @@ void main() {
       test('Start of Event 1 and End of Event 2 is same', () {
         final events = [
           CalendarEventData(
-            title: 'Event 1',
+            price: 6000,
+            type: EventType.expenses,
             date: now,
             startTime: now.add(Duration(hours: 2)),
             endTime: now.add(
@@ -446,7 +482,8 @@ void main() {
             ),
           ),
           CalendarEventData(
-            title: 'Event 2',
+            price: 8000,
+            type: EventType.expenses,
             date: now,
             startTime: now.add(Duration(hours: 1)),
             endTime: now.add(

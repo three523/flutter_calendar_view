@@ -5,6 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../calendar_view.dart';
 import '../calendar_event_data.dart';
 import '../constants.dart';
 import '../extensions.dart';
@@ -118,6 +119,13 @@ class FilledCell<T extends Object?> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int result = events.fold(0, (previousValue, element) {
+      if (element.type == EventType.income) {
+        return previousValue + element.price;
+      } else {
+        return previousValue - element.price;
+      }
+    });
     return Container(
       color: backgroundColor,
       child: Column(
@@ -152,7 +160,7 @@ class FilledCell<T extends Object?> extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(
-                      events.length,
+                      1,
                       (index) => GestureDetector(
                         onTap: () =>
                             onTileTap?.call(events[index], events[index].date),
@@ -169,12 +177,14 @@ class FilledCell<T extends Object?> extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  events[index].title,
+                                  result.abs().toString(),
                                   overflow: TextOverflow.clip,
                                   maxLines: 1,
                                   style: events[index].titleStyle ??
                                       TextStyle(
-                                        color: events[index].color.accent,
+                                        color: result >= 0
+                                            ? Colors.blue
+                                            : Colors.red,
                                         fontSize: 12,
                                       ),
                                 ),

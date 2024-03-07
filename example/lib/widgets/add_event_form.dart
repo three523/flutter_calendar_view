@@ -287,7 +287,8 @@ class _AddOrEditEventFormState extends State<AddOrEditEventForm> {
       startTime: _startTime,
       endDate: _endDate,
       color: _color,
-      title: _titleController.text.trim(),
+      price: int.parse(_titleController.text.trim()),
+      type: EventType.income,
       description: _descriptionController.text.trim(),
     );
 
@@ -304,7 +305,7 @@ class _AddOrEditEventFormState extends State<AddOrEditEventForm> {
     _endDate = event.endDate;
     _startTime = event.startTime ?? _startTime;
     _endTime = event.endTime ?? _endTime;
-    _titleController.text = event.title;
+    _titleController.text = event.price.toString();
     _descriptionController.text = event.description ?? '';
   }
 
