@@ -673,7 +673,7 @@ class DayViewState<T extends Object?> extends State<DayView<T>> {
     if (events.isNotEmpty) {
       return RoundedEventTile(
         borderRadius: BorderRadius.circular(10.0),
-        title: events[0].title,
+        title: events[0].price.toString(),
         totalEvents: events.length - 1,
         description: events[0].description,
         padding: EdgeInsets.all(10.0),

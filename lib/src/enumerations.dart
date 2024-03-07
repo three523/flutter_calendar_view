@@ -48,3 +48,8 @@ enum LineStyle {
   /// Dashed line
   dashed,
 }
+
+enum EventType {
+  income,
+  expenses,
+}

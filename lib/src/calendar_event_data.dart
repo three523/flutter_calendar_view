@@ -24,7 +24,7 @@ class CalendarEventData<T extends Object?> {
   final DateTime? endTime;
 
   /// Title of the event.
-  final String title;
+  final int price;
 
   /// Description of the event.
   final String? description;
@@ -44,13 +44,16 @@ class CalendarEventData<T extends Object?> {
   /// Define style of description.
   final TextStyle? descriptionStyle;
 
+  final EventType type;
+
   /// {@macro calendar_event_data_doc}
   CalendarEventData({
-    required this.title,
+    required this.price,
     required DateTime date,
     this.description,
     this.event,
-    this.color = Colors.blue,
+    required this.type,
+    this.color = Colors.transparent,
     this.startTime,
     this.endTime,
     this.titleStyle,
@@ -98,7 +101,7 @@ class CalendarEventData<T extends Object?> {
         "startTime": startTime,
         "endTime": endTime,
         "event": event,
-        "title": title,
+        "title": price,
         "description": description,
         "endDate": endDate,
       };
@@ -107,8 +110,9 @@ class CalendarEventData<T extends Object?> {
   /// as the arguments.
   ///
   CalendarEventData<T> copyWith({
-    String? title,
+    int? price,
     String? description,
+    EventType? type,
     T? event,
     Color? color,
     DateTime? startTime,
@@ -119,8 +123,9 @@ class CalendarEventData<T extends Object?> {
     DateTime? date,
   }) {
     return CalendarEventData(
-      title: title ?? this.title,
+      price: price ?? this.price,
       date: date ?? this.date,
+      type: type ?? this.type,
       startTime: startTime ?? this.startTime,
       endTime: endTime ?? this.endTime,
       color: color ?? this.color,
@@ -150,7 +155,7 @@ class CalendarEventData<T extends Object?> {
             (endTime != null &&
                 other.endTime != null &&
                 endTime!.hasSameTimeAs(other.endTime!))) &&
-        title == other.title &&
+        price == other.price &&
         color == other.color &&
         titleStyle == other.titleStyle &&
         descriptionStyle == other.descriptionStyle &&
@@ -163,7 +168,7 @@ class CalendarEventData<T extends Object?> {
       descriptionStyle.hashCode ^
       titleStyle.hashCode ^
       color.hashCode ^
-      title.hashCode ^
+      price.hashCode ^
       date.hashCode;
 }
 

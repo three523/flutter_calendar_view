@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,7 +11,8 @@ void main() {
     /// The bool value indicates if the event is "important" or "regular".
 
     final first = CalendarEventData(
-      title: 'Regular event - first',
+      price: 1000,
+      type: EventType.income,
       event: false,
       date: date,
       startTime: date.add(oneHour),
@@ -17,7 +20,8 @@ void main() {
     );
 
     final second = CalendarEventData(
-      title: 'Important event - second',
+      price: 2000,
+      type: EventType.income,
       event: true,
       date: date,
       startTime: date.add(oneHour * 2),
@@ -25,7 +29,8 @@ void main() {
     );
 
     final third = CalendarEventData(
-      title: 'Important event - third',
+      price: 3000,
+      type: EventType.expenses,
       event: true,
       date: date,
       startTime: date.add(oneHour * 3),
@@ -33,7 +38,8 @@ void main() {
     );
 
     final fourth = CalendarEventData(
-      title: 'Regular event - fourth',
+      price: 4000,
+      type: EventType.income,
       event: false,
       date: date,
       startTime: date.add(oneHour * 4),
@@ -89,10 +95,10 @@ void main() {
       test('Should fallback to default sorter if custom sorter returns 0', () {
         /// Sorter that will only sort the fourth event
         final sorter = (CalendarEventData<bool> a, CalendarEventData<bool> b) {
-          if (a.title == 'Regular event - fourth') {
+          if (a.price == 'Regular event - fourth') {
             return -1;
           }
-          if (b.title == 'Regular event - fourth') {
+          if (b.price == 'Regular event - fourth') {
             return 1;
           }
           return 0;

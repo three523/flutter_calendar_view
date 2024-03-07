@@ -37,36 +37,41 @@ class MyApp extends StatelessWidget {
 List<CalendarEventData> _events = [
   CalendarEventData(
     date: _now,
-    title: "Project meeting",
+    price: 1000,
     description: "Today is project meeting.",
+    type: EventType.expenses,
     startTime: DateTime(_now.year, _now.month, _now.day, 18, 30),
     endTime: DateTime(_now.year, _now.month, _now.day, 22),
   ),
   CalendarEventData(
     date: _now.add(Duration(days: 1)),
+    type: EventType.expenses,
     startTime: DateTime(_now.year, _now.month, _now.day, 18),
     endTime: DateTime(_now.year, _now.month, _now.day, 19),
-    title: "Wedding anniversary",
+    price: 2000,
     description: "Attend uncle's wedding anniversary.",
   ),
   CalendarEventData(
     date: _now,
+    type: EventType.income,
     startTime: DateTime(_now.year, _now.month, _now.day, 14),
     endTime: DateTime(_now.year, _now.month, _now.day, 17),
-    title: "Football Tournament",
+    price: 3000,
     description: "Go to football tournament.",
   ),
   CalendarEventData(
     date: _now.add(Duration(days: 3)),
+    type: EventType.expenses,
     startTime: DateTime(_now.add(Duration(days: 3)).year,
         _now.add(Duration(days: 3)).month, _now.add(Duration(days: 3)).day, 10),
     endTime: DateTime(_now.add(Duration(days: 3)).year,
         _now.add(Duration(days: 3)).month, _now.add(Duration(days: 3)).day, 14),
-    title: "Sprint Meeting.",
+    price: 2000,
     description: "Last day of project submission for last year.",
   ),
   CalendarEventData(
     date: _now.subtract(Duration(days: 2)),
+    type: EventType.income,
     startTime: DateTime(
         _now.subtract(Duration(days: 2)).year,
         _now.subtract(Duration(days: 2)).month,
@@ -77,11 +82,12 @@ List<CalendarEventData> _events = [
         _now.subtract(Duration(days: 2)).month,
         _now.subtract(Duration(days: 2)).day,
         16),
-    title: "Team Meeting",
+    price: 1000,
     description: "Team Meeting",
   ),
   CalendarEventData(
     date: _now.subtract(Duration(days: 2)),
+    type: EventType.income,
     startTime: DateTime(
         _now.subtract(Duration(days: 2)).year,
         _now.subtract(Duration(days: 2)).month,
@@ -92,7 +98,7 @@ List<CalendarEventData> _events = [
         _now.subtract(Duration(days: 2)).month,
         _now.subtract(Duration(days: 2)).day,
         12),
-    title: "Chemistry Viva",
+    price: 4000,
     description: "Today is Joe's birthday.",
   ),
 ];

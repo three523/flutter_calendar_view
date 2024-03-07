@@ -238,7 +238,7 @@ class FullDayEventView<T> extends StatelessWidget {
                 padding: const EdgeInsets.all(1.0),
                 height: 24,
                 child: Text(
-                  events[index].title,
+                  events[index].price.toString(),
                   style: titleStyle ??
                       TextStyle(
                         fontSize: 16,
